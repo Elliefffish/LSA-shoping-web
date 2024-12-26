@@ -12,7 +12,7 @@ const nextConfig = {
     ],
   },};*/
  images: {
-    unoptimized: true, // 禁用 Next.js 图片优化
+    unoptimized: true, 
   },
 };
 export default nextConfig;
