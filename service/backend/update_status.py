@@ -11,11 +11,14 @@ def update_package_periodically(package_id = '', min=3):
     while package_id != '' :
         # Fetch the latest package_id from the Status table
         cursor.execute("SELECT status_id FROM Packages WHERE package_id = (?)", (package_id,))
-        if cursor.fetchone()!= None:
-            current_status_id = cursor.fetchone()[0]
-    
+        current_status_id = 0
+        result = cursor.fetchone()
+        if result!=None:
+            current_status_id = result[0]
+        print(current_status_id)
         # Check if the latest_package_id is new and not processed yet
         if current_status_id > 1:
+            time.sleep(10*min)
             # Update the Package table
             cursor.execute("UPDATE Packages SET status_time = ?, status_id = ? WHERE package_id = ?", (datetime.datetime.now(), current_status_id-1, package_id))
             conn.commit()
@@ -24,9 +27,9 @@ def update_package_periodically(package_id = '', min=3):
 
             #package_id.add(latest_package_id)  # Mark as processed
 
-        time.sleep(10*min)  # Wait for 3 minutes (180 seconds)
+        #time.sleep(10*min)  # Wait for 3 minutes (180 seconds)
 
     conn.close()  # Close the connection (this line will only be reached if the loop breaks)
 
 # Start the periodic update process
-#update_package_periodically('PKG9691', 1)
+update_package_periodically('PKG9691', 1)
