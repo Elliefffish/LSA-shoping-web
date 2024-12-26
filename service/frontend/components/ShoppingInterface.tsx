@@ -43,7 +43,7 @@ export function ShoppingInterface({ goods }: { goods: Good[]}) {
 
   const handleTracePackage = () => {
     if (orderedPackageId) {
-      router.push(`/packages?id=${orderedPackageId}`)
+      router.push(`/shopping/packages?id=${orderedPackageId}`)
     }
   }
 
