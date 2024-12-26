@@ -52,8 +52,11 @@ export function ShoppingInterface({ goods }: { goods: Good[]}) {
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       {goods.map((good) => (
         <div key={good.good_id} className="border p-4 rounded-lg">
-          <Image src={`${api_url}/image?img=${good.img}`} alt={good.name} width={203} height={200} className="mb-2" />
-          {/*
+	<Image src={`/good_img/${good.img.split('/').pop()}`} alt={good.name} width={203} height={200} className="mb-2" />
+     
+	{/*<Image src={`/good_img/fried_rice.jpg`} alt={good.name} width={203} height={200} className="mb-2" />
+          */}
+	   {/*
           <Image src={`http://localhost:3001/image?img=${good.img.split('/').pop()}`} alt={good.name} width={203} height={200} className="mb-2" />
           */}
           <h2 className="text-lg font-semibold">{good.name}</h2>
