@@ -6,6 +6,13 @@ from datetime import datetime
 import uvicorn
 from update_status import update_package_periodically 
 import threading
+import argparse
+
+parser = argparse.ArgumentParser(description="Run FastAPI app")
+parser.add_argument("--host", default="127.0.0.1", help="Host address to bind to")
+parser.add_argument("--port", default=8000, type=int, help="Port to bind to")
+args = parser.parse_args()
+
 
 # 初始化 FastAPI 應用
 app = FastAPI()
@@ -292,4 +299,4 @@ def list_goods():
 
 
 if __name__ == '__main__':
-    uvicorn.run(app='api:app', host='127.0.0.1', port=8000, reload=True)
+    uvicorn.run("api:app", host=args.host, port=args.port, reload=True)
