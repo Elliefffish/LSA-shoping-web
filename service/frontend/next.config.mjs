@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
 
-images: {
+/*images: {
     remotePatterns: [
       {
         protocol: 'http',
@@ -10,6 +10,9 @@ images: {
         pathname: '/image',    
       },
     ],
-  },};
-
+  },};*/
+ images: {
+    unoptimized: true, // 禁用 Next.js 图片优化
+  },
+};
 export default nextConfig;
