@@ -14,10 +14,11 @@ def insert_status():
   c.execute("DELETE from Status")
   for status, place, time in package_data:
     c.execute("INSERT INTO Status (status, place) VALUES (?, ?)", (status, place))
-  subprocess.run(['sqlite3','shopping.db',
-               '-cmd','.mode csv','.import goods.csv Goods'],capture_output=True)
   conn.commit()
   conn.close()
+  
+  subprocess.run(['sqlite3','shopping.db',
+               '-cmd','.mode csv','.import goods.csv Goods'],capture_output=True)
 
 create_db()
 insert_status()
