@@ -1,1 +1,10 @@
+# Python
 __pycache__/
+.cache
+# Node
+node_modules/
+.npm
+.env.local
+.next
+.cache/
+*.db
